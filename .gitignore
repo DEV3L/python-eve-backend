@@ -1,3 +1,6 @@
+.idea
+.history
+
 *.code-workspace
 settings.json
 
