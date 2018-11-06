@@ -1,9 +1,8 @@
 from pymongo import MongoClient
+from bson import ObjectId
 
 
 class MongoDatabase:
-    pass
-
     def __init__(self):
         mongo_url = "mongodb://localhost:27017/test"
         client = MongoClient(mongo_url)
@@ -16,4 +15,4 @@ class MongoDatabase:
         return str(insert_object.inserted_id)
 
     def get(self, collection: str, id: str):
-        return self.mongo_db[collection].find_one({'_id': id})
+        return self.mongo_db[collection].find_one({'_id': ObjectId(id)})
