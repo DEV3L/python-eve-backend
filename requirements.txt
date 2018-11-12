@@ -1,5 +1,6 @@
 eve
 pymongo
+PyJWT
 
 pytest
 pylint

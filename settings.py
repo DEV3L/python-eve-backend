@@ -2,13 +2,14 @@ import os
 
 # We want to seamlessy run our API both locally and on Heroku. If running on
 # Heroku, sensible DB connection settings are stored in environment variables.
-MONGO_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/evedemo')
+MONGO_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/test')
 
+IF_MATCH = False
 
 # Enable reads (GET), inserts (POST) and DELETE for resources/collections
 # (if you omit this line, the API will default to ['GET'] and provide
 # read-only access to the endpoint).
-RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
+RESOURCE_METHODS = ['GET', 'POST']
 
 # Enable reads (GET), edits (PATCH) and deletes of individual items
 # (defaults to read-only item access).
@@ -74,7 +75,7 @@ people = {
 works = {
     # if 'item_title' is not provided Eve will just strip the final
     # 's' from resource name, and use it as the item_title.
-    #'item_title': 'work',
+    # 'item_title': 'work',
 
     # We choose to override global cache-control directives for this resource.
     'cache_control': 'max-age=10,must-revalidate',
