@@ -5,25 +5,53 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Integration Tests",
+            "name": "PyTest - Unit",
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
             "module": "pytest",
             "args": [
+                "-sv",
+                "tests/unit"
+            ],
+            "cwd": "${workspaceRoot}",
+            "env": {
+                "PYTHONPATH": "."
+            },
+            "envFile": "${workspaceRoot}/.env",
+            
+        },
+        {
+            "name": "PyTest - All",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${config:python.pythonPath}",
+            "module": "pytest",
+            "args": [
+                "-sv",
                 "tests/integration"
             ],
-            "debugOptions": [
-                "WaitOnAbnormalExit",
-                "WaitOnNormalExit",
-                "RedirectOutput"
-            ]
+            "cwd": "${workspaceRoot}",
+            "env": {
+                "PYTHONPATH": "."
+            },
+            "envFile": "${workspaceRoot}/.env",
+            
+        },
+        {
+            "name": "python-eve-backend",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/run.py",
+            "args": [
+                "runserver"
+            ],
             "console": "integratedTerminal",
             "cwd": "${workspaceRoot}",
             "env": {},
             "envFile": "${workspaceRoot}/.env",
-
         },
     ]
 }

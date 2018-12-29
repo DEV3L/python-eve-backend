@@ -5,5 +5,11 @@ gunicorn
 pymongo
 PyJWT
 
+# non-functional
 pytest
+
+bandit
+coveralls
+coverage
 pylint
+tox
