@@ -5,6 +5,8 @@ from flask import jsonify, request, session
 from werkzeug.exceptions import ImATeapot
 
 from app.authentication.jwt import encode_auth_token, decode_auth_token
+from flask_runner import Manager
+
 
 HTTP_SUCCESS = 200
 HTTP_BAD_REQUEST = 400
@@ -90,8 +92,7 @@ def _build_authorization(user, token):
 def _get_secret():
     return os.environ.get('JWT_SECRET') or 'ThisShouldNotBeTheDefaultValue'
 
+manager = Manager(app)
 
 if __name__ == '__main__':
-    app.run(host=host, port=port)
-
-    print(app)
+        manager.run()

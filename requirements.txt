@@ -1,4 +1,7 @@
 eve
+Flask==0.10.1
+flask-runner
+gunicorn
 pymongo
 PyJWT
 
