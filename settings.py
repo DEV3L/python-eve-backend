@@ -1,24 +1,26 @@
 import os
 
-# We want to seamlessy run our API both locally and on Heroku. If running on
-# Heroku, sensible DB connection settings are stored in environment variables.
-MONGO_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/test')
+MONGO_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/brain-bit')
 
 IF_MATCH = False
+PAGINATION_LIMIT = 1000
+PAGINATION_DEFAULT = 1000
 
 # Enable reads (GET), inserts (POST) and DELETE for resources/collections
-# (if you omit this line, the API will default to ['GET'] and provide
-# read-only access to the endpoint).
-RESOURCE_METHODS = ['GET', 'POST']
+# (if you omit this line, the API will default to ['GET'] and provide read-only access to the endpoint).
+RESOURCE_METHODS = ['GET', 'POST']  # DELETE
 
-# Enable reads (GET), edits (PATCH) and deletes of individual items
-# (defaults to read-only item access).
-ITEM_METHODS = ['GET', 'PATCH', 'DELETE']
+# Enable reads (GET), edits (PATCH) and deletes of individual items (defaults to read-only item access).
+ITEM_METHODS = ['GET', 'PATCH', 'DELETE']  # PUT
 
-# We enable standard client cache directives for all resources exposed by the
-# API. We can always override these global settings later.
+# Client cache directives for all resources exposed
 CACHE_CONTROL = 'max-age=20'
 CACHE_EXPIRES = 20
+
+# Cross-Origin Resource Sharing (CORS) => '*'
+X_DOMAINS = '*'
+X_HEADERS = ['Authorization', 'Content-type']
+X_ALLOW_CREDENTIALS = True
 
 # Our API will expose two resources (MongoDB collections): 'people' and
 # 'works'. In order to allow for proper data validation, we define beaviour
