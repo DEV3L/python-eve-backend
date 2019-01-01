@@ -46,7 +46,7 @@
             "request": "launch",
             "program": "${workspaceRoot}/run.py",
             "args": [
-                "runserver"
+                ""
             ],
             "console": "integratedTerminal",
             "cwd": "${workspaceRoot}",

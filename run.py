@@ -5,7 +5,6 @@ from flask import jsonify, request, session
 from werkzeug.exceptions import ImATeapot
 
 from app.authentication.jwt import encode_auth_token, decode_auth_token
-from flask_runner import Manager
 
 
 HTTP_SUCCESS = 200
@@ -13,17 +12,12 @@ HTTP_BAD_REQUEST = 400
 HTTP_INTERNAL_SERVER_ERROR = 500
 HTTP_UNAUTHORIZED = 401
 
-# Heroku support: bind to PORT if defined, otherwise default to 5000.
+port = 5000
+host = '127.0.0.1'
 
 if 'PORT' in os.environ:
     port = int(os.environ.get('PORT'))
-    # use '0.0.0.0' to ensure your REST API is reachable from all your
-    # network (and not only your computer).
     host = '0.0.0.0'
-else:
-    port = 5000
-    host = '127.0.0.1'
-
 
 app = Eve()
 
@@ -92,7 +86,6 @@ def _build_authorization(user, token):
 def _get_secret():
     return os.environ.get('JWT_SECRET') or 'ThisShouldNotBeTheDefaultValue'
 
-manager = Manager(app)
 
 if __name__ == '__main__':
-        manager.run()
+    app.run(host=host, port=port)

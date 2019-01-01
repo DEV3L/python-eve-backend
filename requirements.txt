@@ -1,9 +1,9 @@
 eve
-Flask==0.10.1
-flask-runner
+Flask
 gunicorn
 pymongo
 PyJWT
+tweepy
 
 # non-functional
 pytest
